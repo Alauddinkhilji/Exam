@@ -1,0 +1,365 @@
+#sql
+SELECT design_code
+FROM designation_masters
+MINUS
+SELECT design_code
+FROM staff_masters;
+
+
+DECLARE
+NRECORD STAFF_MASTERS%ROWTYPE;
+BEGIN
+SELECT * INTO NRECORD
+FROM STAFF_MASTERS
+WHERE STAFF_CODE = 100001;
+UPDATE STAFF_MASTERS
+SET STAFF_SAL=STAFF_SAL+1000
+WHERE STAFF_CODE = 100001;
+END;
+
+ DECLARE
+ NRECORD STAFF_MASTERS%ROWTYPE;
+ BEGIN
+ SELECT * INTO NRECORD
+ FROM STAFF_MASTERS
+ WHERE STAFF_CODE = 100001;
+ UPDATE STAFF_MASTERS
+ SET STAFF_SAL=STAFF_SAL+1000
+ WHERE STAFF_CODE = 100001;
+DBMS_OUTPUT.PUT_LINE(NRECORD.STAFF_CODE ||NRECORD.STAFF_NAME || NRECORD.STAFF_SAL);
+ END;
+ /
+
+
+DECLARE 
+DEPT_INFO DEPARTMENT_MASTER%ROWTYPE;
+BEGIN
+DEPT_INFO.DEPT_CODE:=12;
+DEPT_INFO.DEPT_NAME:='PERSONEL';
+INSERT INTO DEPARTMENT_MASTER VALUES DEPT_INFO;
+DBMS_OUTPUT.PUT_LINE(DEPT_INFO.DEPT_CODE || DEPT_INFO.DEPT_NAME);
+END;
+END;
+
+
+DECLARE 
+DEPT_INFO DEPARTMENT_MASTER%ROWTYPE;
+BEGIN
+DEPT_INFO.DEPT_CODE:=12;
+DEPT_INFO.DEPT_NAME:='PERSONEL';
+INSERT INTO DEPARTMENT_MASTER VALUES DEPT_INFO;
+DBMS_OUTPUT.PUT_LINE(DEPT_INFO.DEPT_CODE || DEPT_INFO.DEPT_NAME);
+END;
+
+
+CREATE OR REPLACE PROCEDURE GREETINGS
+AS
+BEGIN
+DBMS_OUTPUT.PUT_LINE('GANESH');
+END;
+/
+
+ EXECUTE GREETINGS
+
+
+ DECLARE
+ A NUMBER;
+ B NUMBER;
+ C NUMBER;
+ PROCEDURE MINNUMBER(X IN NUMBER, Y IN NUMBER, Z OUT NUMBER) 
+ AS
+ BEGIN
+ IF X<Y THEN
+ Z:=X;
+ ELSE
+ Z:=Y;
+ END IF;
+ END;
+ BEGIN
+ A:=23;
+ B:=20;
+ MINNUMBER(A,B,C);
+ DBMS_OUTPUT.PUT_LINE('MINIMUM IS ' ||C);
+ END;
+ /
+
+CREATE OR REPLACE PROCEDURE MINNUMBER(X IN NUMBER, Y IN NUMBER, Z OUT NUMBER)
+ AS
+ BEGIN
+ IF X<Y THEN
+ Z:=X;
+ ELSE
+ Z:=Y;
+ END IF;
+ END;
+ /
+
+DECLARE
+ A NUMBER;
+ B NUMBER;
+ C NUMBER;
+ BEGIN
+ A:=23;
+ B:=20;
+ MINNUMBER(A,B,C);
+ DBMS_OUTPUT.PUT_LINE('MINIMUM IS ' ||C);
+ END;
+ /
+
+
+
+DECLARE
+ A NUMBER;
+ PROCEDURE SQUARE(X IN OUT NUMBER) 
+ AS
+ BEGIN
+ X:=X*X;
+ END;
+ BEGIN
+ A:=7;
+ SQUARE(A);
+ DBMS_OUTPUT.PUT_LINE(CHR(10)||'SQUARE IS ' ||A);
+ END;
+ /
+
+CREATE TABLE CUSTOMERS(ID NUMBER(8) PRIMARY KEY, NAME VARCHAR2(80) NOT NULL, AGE NUMBER(3) NOT NULL, ADDRESS VARCHAR2(40), SALARY DECIMAL(10,2))
+
+CREATE OR REPLACE FUNCTION COUNTCUST
+RETURN NUMBER IS
+TOTAL NUMBER (2) := 0;
+BEGIN
+SELECT COUNT(*) INTO TOTAL
+FROM CUSTOMER;
+RETURN TOTAL;
+END;
+
+ DECLARE
+ C NUMBER(2);
+ BEGIN
+ C:=COUNTCUST();
+ DBMS_OUTPUT.PUT_LINE(CHR(10) ||'TOTAL CUST COUNT IS : '|| C);
+ END;
+ /
+
+
+DECLARE
+A NUMBER;
+B NUMBER;
+C NUMBER;
+FUNCTION MINNUMBER (X IN NUMBER, Y IN NUMBER)
+RETURN NUMBER
+IS
+Z NUMBER;
+BEGIN
+IF X<Y THEN
+Z:=X;
+ ELSE
+ Z:=Y;
+ END IF;
+RETURN Z;
+ END;
+BEGIN
+A:=20;
+B:=25;
+C:= MINNUMBER(A,B);
+DBMS_OUTPUT.PUT_LINE(CHR(10) ||'MINIMUM IS : '|| C);
+END;
+
+
+
+CREATE OR REPLACE FUNCTION MINIMUM(X IN NUMBER, Y IN NUMBER)
+RETURN NUMBER 
+IS
+Z NUMBER;
+ BEGIN
+ IF X<Y THEN
+ Z:=X;
+ ELSE
+ Z:=Y;
+ END IF;
+ RETURN Z;
+ END;
+ 
+
+
+DECLARE
+A NUMBER := 5;
+B NUMBER := 7;
+C NUMBER;
+BEGIN
+C:= MINIMUM(A,B);
+DBMS_OUTPUT.PUT_LINE(CHR(10) ||'MINIMUM IS : '|| C);
+END;
+
+DECLARE
+CURSOR C1 IS
+SELECT STUDENT_CODE,STUDENT_NAME FROM STUDENT_MASTERS;
+V_STUD_CODE STUDENT_MASTERS.STUDENT_CODE%TYPE;
+V_STUD_NAME STUDENT_MASTERS.STUDENT_NAME%TYPE;
+BEGIN
+OPEN C1;
+LOOP
+FETCH C1 INTO V_STUD_CODE, V_STUD_NAME;
+EXIT WHEN C1%NOTFOUND;
+DBMS_OUTPUT.PUT_LINE(CHR(10) || V_STUD_CODE || ' ' || V_STUD_NAME);
+END LOOP;
+CLOSE C1;
+END;
+/
+
+CREATE OR REPLACE TRIGGER display_salary_changes
+BEFORE DELETE OR INSERT OR UPDATE ON customer
+FOR EACH ROW
+WHEN (NEW.ID >0)
+DECLARE
+SAL_DIFF NUMBER;
+BEGIN
+SAL_DIFF := :NEW.SALARY - :OLD.SALARY;
+DBMS_OUTPUT.PUT_LINE ('OLD SALARY: '|| :OLD.SALARY);
+DBMS_OUTPUT.PUT_LINE('NEW SALARY: '|| :NEW.SALARY);
+DBMS_OUTPUT.PUT_LINE('SALARY DIFFERENCE IS:'||SAL_DIFF);
+END;
+/
+
+
+
+create or replace package pack as
+procedure pack_procedure;
+function pack_function return varchar2;
+end pack;
+/
+
+
+CREATE OR REPLACE PACKAGE BODY PACK AS
+PROCEDURE PACK_PROCEDURE IS
+BEGIN
+DBMS_OUTPUT.PUT_LINE('HI, HELLO');
+END PACK_PROCEDURE;
+FUNCTION PACK_FUNCTION RETURN VARCHAR2 IS
+BEGIN
+RETURN('HI GUYS');
+END PACK_FUNCTION;
+END PACK;
+/
+
+execute pack.pack_procedure;
+select pack.pack_function from dual;
+
+ create package cust_sal as
+ procedure find_sal(c_id customer.id%type);
+ end cust_sal;
+ /
+
+
+ create or replace package body cust_sal as
+ procedure find_sal(c_id customer.id%type) is
+ c_sal customer.salary%type;
+ begin
+ select salary into c_sal
+ from customer
+ where id=c_id;
+ dbms_output.put_line('Salary' || c_sal);
+ end find_sal;
+ end cust_sal;
+ /
+
+execute cust_sal.find_sal(2)
+
+
+SQL> column dept_code heading 'Department Code'
+SQL> column dept_name heading 'Department Name'
+SQL> select * from department_msaters where dept_code=50;
+
+column dept_name heading 'Department|Name'   --splitting into two lines
+column dept_code heading 'Department|Code'
+select * from department_masters where dept_code=50;
+
+set underline *
+/
+
+Note: * or any special character
+
+column dept_code format $99,990
+select * from department_masters where dept_code=50; --to add $ in dept_code
+
+DECLARE 
+   CUST_ID CUSTOMER.ID%type;
+   CUST_NAME CUSTOMER.NAME%type; 
+   CUST_ADDR CUSTOMER.ADDRESS%type;
+BEGIN
+   SELECT  NAME,ADDRESS INTO CUST_NAME,CUST_ADDR
+   FROM CUSTOMER
+   WHERE ID='&CUST_ID';
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'NAME: '||  CUST_NAME); 
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'ADDRESS: '||  CUST_ADDR); 
+
+EXCEPTION 
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such customer!'); 
+   WHEN others THEN 
+      dbms_output.put_line('Error!'); 
+END; 
+
+
+DECLARE 
+   CUST_ID CUSTOMER.ID%type := &CC_ID;
+   CUST_NAME CUSTOMER.NAME%type; 
+   CUST_ADDR CUSTOMER.ADDRESS%type;
+   INVALID_ID EXCEPTION;
+BEGIN
+   IF CUST_ID >=10 THEN
+      RAISE INVALID_ID;
+   ELSE
+   SELECT  NAME,ADDRESS INTO CUST_NAME,CUST_ADDR
+   FROM CUSTOMER
+   WHERE ID=CUST_ID;
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'NAME: '||  CUST_NAME); 
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'ADDRESS: '||  CUST_ADDR); 
+END IF;
+
+EXCEPTION  
+   WHEN INVALID_ID THEN
+      dbms_output.put_line('ENTER A VALID NUMBER!');
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such customer!'); 
+   WHEN others THEN 
+      dbms_output.put_line('Error!'); 
+END; 
+
+DECLARE 
+   CUST_ID CUSTOMER.ID%type := &CC_ID;
+   CUST_NAME CUSTOMER.NAME%type; 
+   CUST_ADDR CUSTOMER.ADDRESS%type;
+   INVALID_ID EXCEPTION;
+BEGIN
+   IF CUST_ID >=10 THEN
+      RAISE INVALID_ID;
+   ELSE
+   SELECT  NAME,ADDRESS INTO CUST_NAME,CUST_ADDR
+   FROM CUSTOMER
+   WHERE ID=CUST_ID;
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'NAME: '||  CUST_NAME); 
+   DBMS_OUTPUT.PUT_LINE (CHR(10)||'ADDRESS: '||  CUST_ADDR); 
+END IF;
+
+EXCEPTION  
+   WHEN INVALID_ID THEN
+      dbms_output.put_line('ENTER A VALID NUMBER!');
+   WHEN no_data_found THEN 
+      dbms_output.put_line('No such customer!'); 
+   WHEN others THEN 
+      dbms_output.put_line('Error!'); 
+END; 
+
+
+COLUMN report_date_col NEW_VALUE report_date 
+col report_date_col noprint 
+SELECT TO_CHAR ( SYSDATE ,'DD-Mon-YYYY:HH:MI') AS report_date_col FROM dual;
+
+TTitle left " Student Details Report Date: &report_date " skip 2
+
+column student_name heading 'Student|Name'
+column student_code heading 'Student|Code'
+column dept_code heading 'Department|Code'
+column student_dob heading 'Student|Date of|Birth'
+column student_address heading 'Student|Address'
