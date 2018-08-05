@@ -93,3 +93,10 @@ return number is
 	close cur;	
 	return total;
 	end;
+
+declare 
+c number := 0;
+begin
+c := ganeshk(30);
+dbms_output.put_line(c);
+end;
