@@ -1,0 +1,965 @@
+
+L1 BI AbInitio TD QV Mock Test Set 1
+
+
+Section:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+Time Left : 73 : 03 List View 
+    Active     Attempted     Not Attempted
+Q1
+
+ 
+Among the shell scripts mentioned, Identify the correct syntax used in the "for " statement.
+Single Choice - Select one correct answer from the options list.
+for temp in 1 2 3
+do
+echo " Value is $temp"
+done
+
+for var in "$@";do
+echo"$var" 
+done
+
+for(i=0;i<=5;i++) 
+do
+echo "$i" 
+done
+
+for var in "$@"
+do 
+echo"$var"
+done
+
+Q2
+
+ 
+Which command is used to print a file using printer?
+Single Choice - Select one correct answer from the options list.
+print
+ptr
+lpr
+echo
+Q3
+
+ 
+What type of relationship exists between a dimensions and fact table in Star Schema?
+Single Choice - Select one correct answer from the options list.
+Many-to-many
+One-to-one
+One-to-many
+All of the above
+Q4
+
+ 
+ Which of these packages contains abstract keyword?
+Single Choice - Select one correct answer from the options list.
+java.lang
+java.util
+java.io
+java.system
+Q5
+
+ 
+What is the output of this program?
+
+    class Relational_operator 
+    {
+        public static void main(String args[])
+        {
+            int var1 = 5; 
+            int var2 = 6;
+            System.out.print(var1 > var2);
+        } 
+    }
+Single Choice - Select one correct answer from the options list.
+1
+0
+TRUE
+FALSE
+Q6
+
+ 
+Which rows will this UNION operation return to the user?
+
+SELECT COL_1 FROM TABLE_A    UNION   SELECT COL_6 FROM TABLE_B;
+Single Choice - Select one correct answer from the options list.
+All rows in table_a that have matching rows in table_b
+All rows from table_a and table_b, including duplicate rows
+All rows from table_a and table_b, with duplicate rows eliminated
+All rows from table_a and table_b, with output formatted by table_b
+Q7
+
+ 
+Consider the below code snippet:
+
+CREATE VIEW empl_200_v 
+AS SELECT employee_no AS Emp_No
+,last_name AS Last
+,salary/12 (format '$$$$,$$9.99')
+AS Monthly_Salary
+FROM employee_table
+WHERE dept_no = 200 ;
+
+Is it necessary to alias the derived data called " salary/12 (format '$$$$,$$9.99')" 
+from the view definition.
+Single Choice - Select one correct answer from the options list.
+Derived data with mathematics symbols cannot be used in view definition
+Derived data with mathematics symbols should not have an alias
+Not Mandatory that derived data with mathematics symbols must have an alias
+Derived data with mathematics symbols must have an alias
+Q8
+
+ 
+Find the type of join to which the below query belongs to:
+
+SELECT Customer_name,Order_number,Order_total (FORMAT '$$$,$$9.99' ) 
+FROM Customer_table AS cust,Order_table AS ord WHERE customer_name = 'Billy" Best Choice';
+Single Choice - Select one correct answer from the options list.
+Equi-Join
+Inner Join
+Product Join
+Self Join
+Q9
+
+ 
+Which of the following statements describes Parsing Engine:
+
+1: Managing individual sessions (up to 120)
+2: Parsing and optimizing your SQL requests
+3: It is the logical disk space that is managed by an AMP.
+Single Choice - Select one correct answer from the options list.
+Both Statement 1 and Statement 2
+Both Statement 1 and Statement 3
+Both Statement 2 and Statement 3
+Only Statement 1
+Q10
+
+ 
+If a single column table called "Sales "contains 100 rows with 37 of them being null,
+what result is returned by the below query :
+
+SELECT COUNT(*) from Sales
+Single Choice - Select one correct answer from the options list.
+63
+100
+NULL
+37
+Q11
+
+ 
+Which component of teradata architecture creates a table header on their disk 
+when a table is first created?
+Single Choice - Select one correct answer from the options list.
+AMP
+PE
+BYNET
+Vdisk
+Q12
+
+ 
+Consider the code snippet:
+
+.LOGON 192.168.1.102/dbc,dbc;
+.BEGIN MLOAD TABLES Employee_Stg;
+.LAYOUT Employee;
+.FIELD in_EmployeeNo * VARCHAR(10);
+.FIELD in_FirstName * VARCHAR(30);
+.FIELD in_LastName * VARCHAR(30);
+.FIELD in_BirthDate * VARCHAR(10);
+.FIELD in_JoinedDate * VARCHAR(10);
+.FIELD in_DepartmentNo * VARCHAR(02);
+DML LABEL EmpLabel;
+INSERT INTO Employee_Stg
+(EmployeeNo,FirstName,LastName,BirthDate,JoinedDate,DepartmentNo)
+VALUES (:in_EmployeeNo,:in_FirstName,:in_Lastname,
+:in_BirthDate, :in_JoinedDate,:in_DepartmentNo);
+
+What is the usage of DML_LABEL in Mutiload utility?
+
+Single Choice - Select one correct answer from the options list.
+To define DML commands
+To define table structure
+To define File Location
+All the above
+Q13
+
+ 
+Consider the following scenario:
+
+FastLoad utility is used to load data into empty tables. Since it does not use transient
+journals, data can be loaded quickly. So Imagine if target table is a MULTISET table.
+Will the FastLoad Utility load duplicate rows into the target table.
+Single Choice - Select one correct answer from the options list.
+It doesn't load duplicate rows but in fastload we cannot assign target table as MULTISET
+It will load duplicate rows but in fastload we cannot assign target table as MULTISET
+It doesn't load duplicate rows even if the target table is a MULTISET table.
+It will load duplicate rows since the target table is a MULTISET table.
+Q14
+
+ 
+Which statement executes a parameterized macro named ABC ?
+Single Choice - Select one correct answer from the options list.
+EXEC abc (10, 'ABC');
+EXEC abc (:10, :'ABC');
+EXEC abc VALUES(10, 'ABC');
+EXEC MACRO abc (10, 'ABC');
+Q15
+
+ 
+Find the customer who has ordered the single highest dollar amount order.
+Single Choice - Select one correct answer from the options list.
+SELECT Customer_name,Phone_number FROM Customer_Table WHERE customer_number IN 
+(SELECT customer_number FROM Order_Table WHERE Order_total IN (SELECT MAX(Order_total) 
+FROM Order_Table) ) ;
+
+SELECT Customer_name,Phone_number FROM Customer_Table WHERE customer_number = 
+(SELECT customer_number FROM Order_Table WHERE Order_total IN (SELECT MAX(Order_total) 
+FROM Order_Table) ) ;
+
+SELECT Customer_name,Phone_number FROM Customer_Table WHERE customer_number IN 
+(SELECT customer_number FROM Order_Table WHERE Order_total = (SELECT MAX(Order_total) 
+FROM Order_Table) ) ;
+
+SELECT Customer_name,Phone_number FROM Customer_Table WHERE customer_number = 
+(SELECT customer_number FROM Order_Table WHERE Order_total = (SELECT MAX(Order_total) 
+FROM Order_Table) ) ;
+
+Q16
+
+ 
+For the following table definition: 
+
+CREATE TABLE t7 
+(d1 DATE, i1 INTEGER)
+PRIMARY INDEX (i1);
+   
+Which statement creates an empty table with the same table definition?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+CREATE TABLE t9 AS (SELECT * FROM t7) WITH NO DATA;
+CREATE TABLE t9 AS t7 WITHOUT DATA;
+CREATE TABLE t9 AS t7 WITH NO DATA;
+CREATE TABLE t9 AS t7;
+Q17
+
+ 
+How is data distributed with a partitioned primary index?
+Single Choice - Select one correct answer from the options list.
+It is based on the secondary index
+It is on the partitioning column
+It is based on the primary key of the table
+It is based on the primary index of the table
+Q18
+
+ 
+What is the result of the following query? 
+
+SELECT ADD_MONTHS (CURRENT_DATE, 40*3); 
+Single Choice - Select one correct answer from the options list.
+The current date plus 120 days
+The current date plus 10 years
+The current date plus 120 years
+The current date plus 40 months, three days
+Q19
+
+ 
+Consider the below image:
+
+
+
+The above diagram creates a table which contains primary index designated  with 2 column 
+called last_name and first_name. Is this possible in teradata.Evaluate the following options.
+Single Choice - Select one correct answer from the options list.
+No, Only one column can be designated as Primary Index
+Teradata allows more than one column to be designated as the Primary Index.
+Yes,Teradata allows more than one column to be designated as the Primary Index .
+But the syntax given in the image is wrong for designating mutiple column as primary index
+Primary index cannot be designated to coulmns in the create statemnt of teradata sql
+Q20
+
+ 
+What is the output of the following?
+
+x = 'abcd'
+for i in range(x):
+    print(i)
+Single Choice - Select one correct answer from the options list.
+a b c d
+0 1 2 3
+error
+d c b a
+Q21
+
+ 
+What is the output of the following?
+
+print('ab\ncd\nef'.splitlines())
+Single Choice - Select one correct answer from the options list.
+['ab', 'cd', 'ef']
+['ab\n', 'cd\n', 'ef\n']
+['ab\n', 'cd\n', 'ef']
+['ab', 'cd', 'ef\n']
+Q22
+
+ 
+What will be the output?
+
+def addItem(listParam):
+    listParam += [1]
+ 
+mylist = [1, 2, 3, 4]
+addItem(mylist)
+print(len(mylist))
+Single Choice - Select one correct answer from the options list.
+1
+4
+5
+8
+Q23
+
+ 
+The input file contains unsorted list of CompanyID, CompanyName, their list of projects, 
+income earned by each project at each location. Which component is used to find 
+the summary of the companies and their projects according to the year, location & Projects?
+Single Choice - Select one correct answer from the options list.
+Aggregate
+Rollup
+Join
+Hash Rollup
+Q24
+
+ 
+The cumulative income of an organisation can be calculated by using _________.
+Single Choice - Select one correct answer from the options list.
+Aggregate
+Rollup
+Scan
+All the above
+Q25
+
+ 
+The recently visited URL can be found out by using _________ component.
+Single Choice - Select one correct answer from the options list.
+ReFormat
+Sort
+Dedup Sort
+Join
+Q26
+
+ 
+The Repartitioning of data will improve the performance.
+Single Choice - Select one correct answer from the options list.
+TRUE
+FALSE
+Q27
+
+ 
+The Source file is having the fields like EMPNO,FNAME,MNAME,LNAME,SALARY,JOB,DOB,DOJ. 
+The target file should contain EMPNO, FULLNAME, SALARY. 
+
+Which Component should be used to obtain the target?
+Single Choice - Select one correct answer from the options list.
+ReFormat
+Sort
+Dedup Sort
+Join
+Q28
+
+ 
+Abinitio is a/an __________ based ETL tool.
+Single Choice - Select one correct answer from the options list.
+Engine
+Code
+Both 1 and 2
+Neither 1 nor 2
+Q29
+
+ 
+The employee table contains EMPNO,ENAME, DNO,SALARY. The Dept table contains 
+DID,DNAME,LOC. The output file contains EMPNO,ENAME,DEPTNO,DNAME. 
+Which component can be used?
+Single Choice - Select one correct answer from the options list.
+Join
+Lookup
+Both 1 and 2
+Neither 1 nor 2
+Q30
+
+ 
+In Sort Component, the Max-core parameter has the default memory usage _______.
+Single Choice - Select one correct answer from the options list.
+1 MB
+10 MB
+100 MB
+Unlimited
+Q31
+
+ 
+In XYZ bank, there are many customers. They are doing n number of transactions in a day. 
+We want to keep all the customers and their transaction details into a list. 
+Which component can be used to combine all the data from both customer and 
+transaction data?
+Single Choice - Select one correct answer from the options list.
+Sort
+Join
+Lookup
+Match Merge
+Q32
+
+ 
+The input file contains the details of the company like COMPANYID, CompanyName, 
+Sales_Each_Quarter. The Ouput file contains fileds like CompanyId, CompanyName, 
+Q1_SALES,Q2_SALES,Q3_SALES,Q4_SALES. Which component can be used?
+Single Choice - Select one correct answer from the options list.
+Reformat
+Join
+Sort
+Normalise
+Q33
+
+ 
+Input file contains EMPNO,ENAME,SALARY, DNO. The employees working in dno 10 should 
+go to the first output file, rest will go to the second file. The records having NULL values in 
+their DNO can be fetched by using the third file. How to perform the action on the third file?
+Single Choice - Select one correct answer from the options list.
+FILTER BY EXPRESSION BY SELECT PORT
+FILTER BY EXPRESSION BY DESELECT PORT
+FILTER BY EXPRESSION BY REJECT PORT
+None of the above
+Q34
+
+ 
+The input file contains 3 fields with 3 values. Fields are Source, Destination, Fare.  
+Some of the source and destination are repeated again and again. 
+Which component can be effectively used for optimum result?
+Single Choice - Select one correct answer from the options list.
+Sort
+DedupSort
+Rollup
+Filter By Expression
+Q35
+
+ 
+There are 4 players playing the card game. The cards can be distributed to all of them 
+by using ________ technique in Abinitio.
+Single Choice - Select one correct answer from the options list.
+Partition By Key
+Partition By Range
+Partition By Round Robin
+Partition By Expression
+Q36
+
+ 
+The input file contains sorted list of CompanyID, CompanyName, their list of projects, 
+income earned by each project at each location. Which component is used to find 
+the summary of the companies and their projects according to the year, location & Projects?
+Single Choice - Select one correct answer from the options list.
+Aggregate
+Rollup
+Join
+Hash Rollup
+Q37
+
+ 
+In school management system wants to store the student records from multiple file 
+into a single file according to their roll number. Which component can be used ?
+Single Choice - Select one correct answer from the options list.
+Gather
+Interleave
+Concatenate
+Merge
+Q38
+
+ 
+What does the following set expression mean?
+
+Sum({$<Year={2018}, Country={"S*"}>}Sales)
+Single Choice - Select one correct answer from the options list.
+It means sum of Sales for current selection and new filters as Year and Country
+It means sum of Sales for current selection,Year=2018 and only Countries matches 
+the search string ''S*"
+Wildcard search is not allowed in Set Expression.Error Occurred
+Sum of Sales for Year 2018 and all countries which do not start with S
+Q39
+
+ 
+The diagram shows a QlikView data model with a circular reference and loosely coupled tables.
+Which is the best way to eliminate these issues?
+
+
+Single Choice - Select one correct answer from the options list.
+Perform an INNER JOIN between the Shippers and Orders
+Rename the CompanyName field in the Shippers table
+QUALIFY the fields in all 3 tables
+Perform a LEFT JOIN between Customers and Shippers tables
+Q40
+
+ 
+is null(TableA) 
+
+What is the output?
+Single Choice - Select one correct answer from the options list.
+If TableA contains 0 rows it will give 1
+If TableA contains more than 1 rows it will give 1
+If TableA contains more than 1 rows it will give False
+If TableA contains 100 rows it will give True
+Q41
+
+ 
+Which is the correct order of the visualization design process?
+Single Choice - Select one correct answer from the options list.
+Platforms, Information Design, Visual Design, Testing, Users & Context
+Platforms, Visual Design, Information Design, User & Context, Testing
+User & Context, Information Design, Platforms, Visual Design, Testing
+User & Context, Platforms, Information Design, Visual Design, Testing
+Q42
+
+ 
+Valuelist('OrderID', 100, 101, 102, 103, 104, 105 ) 
+
+What is the output?
+Single Choice - Select one correct answer from the options list.
+OrderId, 100, 101, 102, 103, 104, 105
+OrderId
+100,102,103,104,105
+OrderId, 101,105
+Q43
+
+ 
+General script requires password to be set:
+Single Choice - Select one correct answer from the options list.
+TRUE
+FALSE
+Q44
+
+ 
+What does the following set expression mean?
+
+Sum({$*[My BookMark]}Sales)
+Single Choice - Select one correct answer from the options list.
+It means sum of Sales from current selection multiplied by sum of Sales from 
+my bookmark selection.
+It means return sum of Sales from intersection of my bookmark and current selection
+Illegal set identifiers
+It means sum of Sales from either book mark selection or current selection
+Q45
+
+ 
+Which is the best option for loading data into your app if you want to create 
+associations between tables using the Data manager's 'bubble view'?
+Single Choice - Select one correct answer from the options list.
+Add data from files and other sources workflow path with data profiling Enabled
+Add data from files and other sources workflow path with data profiling Disabled
+Script editor workflow path
+All of the above
+Q46
+
+ 
+Business Users will access which of the following dashboards:
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Access Portal
+Access Point
+Access Interface
+AJAX
+None
+Q47
+
+ 
+When you design a sheet, which option can reduce the amount of space needed by 
+allowing the same chart to be displayed by different dimensions?
+Single Choice - Select one correct answer from the options list.
+Cyclic group
+Lookup Dimension
+Layer Expression
+Multi Box
+Q48
+
+ 
+Which is NOT a good method for gathering user information?
+Single Choice - Select one correct answer from the options list.
+Questionnaires
+Interviews
+Field Studies
+Preconceptions
+Q49
+
+ 
+When You Load data from a text file, it is a best practice to use a relative path 
+(rather than an absolute path), and use a variable to store the path information. 
+If the variable name is vPathName, which is the correct syntax for the LOAD statement?
+Single Choice - Select one correct answer from the options list.
+LOAD * FROM [vPathName]\Supplier.xls(biff, no labels, table is Supplier$);
+LOAD * FROM $(vPathName)\Supplier.xls(biff, no labels, table is Supplier$);
+LOAD * FROM [vPathName&Supplier.xls](biff, no labels, table is Supplier$);
+LOAD * FROM [$(vPathName)&Supplier.xls](biff, no labels, table is Supplier$);
+Q50
+
+ 
+Append mode is applicable for:
+Single Choice - Select one correct answer from the options list.
+Log files/text files
+Excel files
+XML
+HTML
+Q51
+
+ 
+This is the way to reduce data in Qlikview:
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+by keeping possible values
+remove all values
+purge all values
+delete minimal values
+none
+Q52
+
+ 
+Which of the following is the first consideration when sorting visualization items 
+based on dimensions and measures?
+Single Choice - Select one correct answer from the options list.
+Right-click on the axis labels in order to determine the sort order.
+Expand individual sort criteria options and switch them to Custom mode in order to 
+select an internal sorting option.
+Examine the sort priority and reorder, using a drag & drop action, if required.
+None of the options specified are correct
+Q53
+
+ 
+Which of the following are acceptable data configurations for the histogram visualization type?
+Single Choice - Select one correct answer from the options list.
+1 field
+1 dimension, 1 measure
+2 fields
+All of the above
+Q54
+
+ 
+Which two of the following are potential uses for 'Master items'?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Save an expression so that it can be reused in other visualizations without re-typing 
+the expression syntax.
+Save the layout of visualizations on the sheet.
+Save the current state of selections.
+Create a dimension which allows one to drill-down through a hierarchy by selecting 
+in a visualization.
+Q55
+
+ 
+Which is the best option to load data into your app if you intend to directly edit 
+the data load script?
+Single Choice - Select one correct answer from the options list.
+Add data from files and other sources workflow path
+Script editor workflow path
+Both the options are correct
+None of the options are correct
+Q56
+
+ 
+At the end of a script section, Qlik Sense automatically presumes a semi-colon to 
+terminate the last statement.
+Single Choice - Select one correct answer from the options list.
+TRUE
+FALSE
+Q57
+
+ 
+Which of the following are acceptable data configurations for the box plot visualization type?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+1 dimension, multiple measures
+2 dimensions, 1 measure
+1 dimension, 1 measure
+2 dimensions, multiple measures
+Q58
+
+ 
+Which of the following are ETL Testing Operations?
+Single Choice - Select one correct answer from the options list.
+Verify whether the data is transforming correctly according to business requirements
+Verify that the projected data is loaded into the data warehouse without any truncation and data loss
+Make sure that ETL application reports invalid data and replaces with default values
+Make sure that data loads at expected time frame to improve scalability and performance
+All of the above
+Q59
+
+ 
+Which of the columns are least suitable for indexes?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Columns which feature most in Where clause
+Columns which has a lots of null values
+Columns which have more unique values
+Columns which features more in order by clause
+Q60
+
+ 
+Identify the correct syntax used for inserting the values in the table by taking the values 
+from another table.
+Single Choice - Select one correct answer from the options list.
+INSERT INTO <Table_Name> VALUES AS SELECT * FROM <Table_Name>;
+INSERT INTO <Table_Name> VALUES SELECT * FROM <Table_Name>;
+INSERT INTO <Table_Name> VALUES AS SELECT FROM <Table_Name>;
+INSERT INTO <Table_Name> VALUES AS SELECT <Table_Name>;
+Q61
+
+ 
+What is the advantage of OTHERS exception handler?
+Single Choice - Select one correct answer from the options list.
+The OTHERS exception handler ensures that all exception goes unhandled
+The OTHERS exception handler ensures that all exception goes unhandled and 
+the program terminates successfully.
+The OTHERS exception handler ensures that no exception goes unhandled and 
+the program terminates abruptly.
+The OTHERS exception handler ensures that no exception goes unhandled and 
+the program terminates successfully.
+Q62
+
+ 
+Which of the statements are true about the following pl/sql block 
+(For the table emps( ecode,ename,salary) : -
+
+DECLARE 
+Emp_number varchar(5) := 'e08'; 
+Emp_name VARCHAR2(10); 
+BEGIN 
+SELECT ename FROM emps WHERE ecode = emp_number;
+DBMS_OUTPUT.PUT_LINE('Employee name is ' || Emp_name); 
+
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN 
+    DBMS_OUTPUT.PUT_LINE('No such employee: ' || Emp_number); 
+
+END;
+Single Choice - Select one correct answer from the options list.
+Will run successfully
+Will show compilation error because into clause is missing
+Will show a compilation error because Emp_name is not initialized
+Will throw an exception
+Q63
+
+ 
+You need to find the salaries for all the employees who have a higher salary than 
+the Vice President of a company 'ABC'.Which of the following queries will give 
+you the required result? (Consider the table structure as given)
+
+SQL> DESC employees
+ Name                             Null?          Type
+ -----------------------       --------       ----------------
+ EMPLOYEE_ID          NOT NULL      NUMBER(6)
+ FIRST_NAME                                   VARCHAR2(20)
+ LAST_NAME              NOT NULL      VARCHAR2(25)
+ EMAIL                       NOT NULL      VARCHAR2(25)
+ PHONE_NUMBER                           VARCHAR2(20)
+ HIRE_DATE               NOT NULL      DATE
+ JOB_ID                      NOT NULL      VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                       NUMBER(2,2)
+ MANAGER_ID                                 NUMBER(6)
+ DEPARTMENT_ID                            NUMBER(4)
+Single Choice - Select one correct answer from the options list.
+SELECT first_name, last_name, salary
+FROM employees 
+WHERE salary > (SELECT salary
+FROM employees 
+WHERE job_id = 'VICE-PRESIDENT'); 
+
+SELECT first_name, last_name, salary
+FROM employees 
+WHERE salary = (SELECT salary
+FROM employees 
+WHERE job_id = 'VICE-PRESIDENT'); 
+
+SELECT first_name, last_name, salary
+FROM employees 
+WHERE job_id = 'VICE-PRESIDENT'); 
+
+None of the above
+
+Q64
+
+ 
+I want to display a user_defined error message from a stored procedure for an error code -2007, 
+which will help me to do?
+Single Choice - Select one correct answer from the options list.
+RAISE
+RAISE_APPLICATION_ERROR
+RAISERROR
+RAISE_APPLICATION_CODE
+Q65
+
+ 
+You need to display the last name of all employees which starts with the letter 'A'. 
+Which of the following queries will yield the required result?
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+SELECT INITCAP (last_name||' works as a '||job_id "Job Description" FROM employees
+WHERE initcap (last_name) like 'A%';
+
+SELECT INITCAP (last_name) ||INITCAP(' works as a: ')|| INITCAP(job_id) "Job
+Description" FROM employees WHERE initcap (last_name) like 'A
+%';
+
+SELECT INITCAP (last_name||' works as a '||INITCAP(job_id)) "Job Description" FROM employees WHERE initcap (last_name) = 'A';
+
+SELECT UPPER (LOWER (last_name||' works as a '||job_id)) "Job Description" FROM
+
+employees WHERE lower (last_name) = 'A';
+
+Q66
+
+ 
+Consider the below code snippet:
+
+CREATE FUNCTION dept count(dept_name varchar(20))
+BEGIN
+DECLARE d count integer;
+SELECT COUNT(*) INTO d count
+FROM instructor
+WHERE instructor.dept_name= dept_name
+RETURN d count;
+END;
+
+The above code produces error when executed.
+Identify that error.
+Single Choice - Select one correct answer from the options list.
+Return type missing
+Dept_name is mismatched
+Reference relation is not mentioned
+Exception section is not considered
+Q67
+
+ 
+Which of the following Cursor declarations in PL/SQL DECLARE section will retrieve 
+the details of all employees who are drawing salary greater than 1500?
+Single Choice - Select one correct answer from the options list.
+CURSOR cur IS Select * from employee where sal<1500
+CURSOR cur IS Select * into emprec from employee where sal>1500
+CURSOR cur IS Select * from employee where sal>1500
+CURSOR cur IS Select * from employee into emprec where sal>1500
+Q68
+
+ 
+Which is a software configuration management concept that helps us to use set of files 
+specific to a particular version?
+Single Choice - Select one correct answer from the options list.
+Baseline
+Source Code
+Data Model
+Test Cases
+Q69
+
+ 
+A testing model which parallelly links testing phase with development phase is ___________.
+Single Choice - Select one correct answer from the options list.
+System testing
+Waterfall
+Prototyping
+V model
+Q70
+
+ 
+Given the following statements:
+
+A:  System testing checks the correctness of functionality of the module.
+B:  Unit testing  checks the correctness of functionality of the module.
+Single Choice - Select one correct answer from the options list.
+A is True, B is True
+A is False, B is True
+A is True, B is False
+A is false, B is false
+Q71
+
+ 
+Consider the following Statement:
+
+It is the activity of providing evidence needed to establish confidence among all concerned, 
+that quality-related activities are being performed effectively.
+
+The above statement describes:
+Single Choice - Select one correct answer from the options list.
+Quality Assurance
+Quality Control
+Quality Policy
+Both Quality Assurance and Quality Control
+Q72
+
+ 
+What is Quality manual?
+Single Choice - Select one correct answer from the options list.
+It includes the employees quality policy and objectives and a highly detailed explanation 
+of the quality control system being used.
+It includes the organization's quality policy and objectives and a highly detailed explanation 
+of the quality control system being used.
+It includes the Vendors quality policy and objectives and a highly detailed explanation 
+of the quality control system being used.
+It includes the customers quality policy and objectives and a highly detailed explanation 
+of the quality control system being used.
+Q73
+
+ 
+What is the use of Data Scrubbing process in ETL?
+Single Choice - Select one correct answer from the options list.
+To reject data from the data warehouse and to create the necessary indexes
+To load the data in the data warehouse and to create the necessary indexes
+To upgrade the quality of data after it is moved into a data warehouse
+To upgrade the quality of data before it is moved into a data warehouse
+Q74
+
+ 
+You are working on a project and need to decide whether or not to use incremental loading 
+or the flush and fill technique. Select the two statements that describe the difference 
+between the two techniques.
+Multiple Choice - This may have multiple correct answers. Select required answer(s) from the options list.
+Incremental loading is more complex to program than Flush and Fill
+Incremental loading requires the tables to be truncated
+Incremental loading is recommend when working with smaller tables.
+Incremental loading is often used to track changes over time in Slow Changing Dimensions.
+Q75
+
+ 
+Which Microsoft server is specifically designed for ETL Processing?
+Single Choice - Select one correct answer from the options list.
+SQL Server Analysis Server
+SQL Server Integration Server
+SQL Server Reporting Server
+SQL Server Agent
+
+
+
+Unix
+12
+DM for BI
+3
+Java
+45
+Teradata Basics
+678910111213141516171819
+Python
+202122
+Ab Initio
+232425262728293031323334353637
+QlikView
+3839404142434445464748495051
+QlikSense
+525354555657
+Software Testing for BI
+58
+Oracle
+596061626364656667
+Intro to SE
+686970
+QPA
+7172
+DW Concepts
+7374
+ETL Basics
+751 out of 75 
